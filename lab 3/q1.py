@@ -8,7 +8,7 @@ DT=(int)(1/dt)
 t= np.linspace(0,1,DT)
 print(t)
 
-x= -1*np.multiply(t,t)/2 + 1 
+x= np.exp(-t)
 
 print(x)
 x1= [1]
@@ -16,7 +16,7 @@ x1= [1]
 for i in range (1,DT):
     x1.append(x1[i-1]+x1[i-1]*(-t)*dt)
 
-print(x1)
+
 arrx1=np.array(x1)
 print(arrx1)
 
