@@ -4,22 +4,23 @@ from scipy.integrate import odeint
 import math
 import pandas as pd
 from sympy import symbols, diff
+import sympy
 
 dt = 0.01
 DT = 1 / dt
-x0 = 2
+x0 = 0
 TLOW = 0
 THIGH = 1
 
 X = symbols('X')
     ############################################################################################################################
-f = 1- 2*X
+f = sympy.cos(X)**2
 df = diff(f, X)
 dff = diff(df, X)
 
 def returns_dydt(x, t):
     ############################################################################################################################
-    dxdt = (1) * (1-2*x)
+    dxdt = (1) * (math.cos(x)**2)
     return dxdt
 
 
@@ -92,5 +93,5 @@ plt.ylabel('Difference (Eulerr sol - Analytical sol)')
 plt.legend()
 plt.grid()
 #plt.savefig('Lab3333')
-plt.savefig('Q6-Anlyt.png')
+plt.savefig('Q3-Anlyt.png')
 plt.show()
