@@ -7,22 +7,22 @@ from sympy import symbols, diff
 import sympy
 
 
-dt = 0.01
+dt = 10**6
 
 x0 = 1
 
 TLOW = 0
-THIGH = 10
+THIGH = 20*10**6
 
 DT = int((1 / dt) *(THIGH - TLOW))
 
 #here f is the dx/dt function
 X, T = symbols('X T')
-f = 40
+f = -(sympy.ln(2)/(4.5*10**9))*X
 
 def returns_dydt(x, t):
     ############################################################################################################################
-    dxdt = 40
+    dxdt = -(math.log(2)/(4.5*10**9))*x
     return dxdt
 
 df = diff(f, X)
@@ -69,10 +69,9 @@ t1 = np.linspace(TLOW, THIGH, DT)
 fig = plt.figure(figsize=(10, 10))
 
 plt.plot(t1, ans, color='green', label='1st', linewidth=2)
-
-plt.xlabel('t')
-plt.ylabel('Analytical sol')
+plt.xlabel('t(year)')
+plt.ylabel('Analytical sol(amount)')
 plt.legend()
 plt.grid()
-plt.savefig('q3.png')
+plt.savefig('q3a.png')
 plt.show()
