@@ -12,15 +12,15 @@ DT = (1 / dt)
 x0 = 1
 
 TLOW = 0
-THIGH = 1
+THIGH = 10
 
 #here f is the dx/dt function
 X, T = symbols('X T')
-f = T*T - X
+f = 40
 
 def returns_dydt(x, t):
     ############################################################################################################################
-    dxdt = t*t - x
+    dxdt = 40
     return dxdt
 
 df = diff(f, X)
@@ -59,11 +59,14 @@ errr= erer(ans)
 print(ans)
 print(errr)
 
+#note this is for x span of 1 sec 
+#for x span of 10 sec
+
 t1 = np.linspace(TLOW, THIGH, int(DT))
 #plotting
 fig = plt.figure(figsize=(10, 10))
 
-plt.plot(t1, errr, color='green', label='1st', linewidth=2)
+plt.plot(t1, ans, color='green', label='1st', linewidth=2)
 plt.xlabel('t')
 plt.ylabel('Analytical sol')
 plt.legend()
