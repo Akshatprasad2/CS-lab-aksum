@@ -8,12 +8,12 @@ import sympy
 
 dt = 0.01
 DT = 1 / dt
-x0 = 1
+x0 = 0.1
 TLOW = 0
 THIGH = 1
 
 X, T = symbols('X T')
-f = T*T - X
+f = -2*X + sympy.exp(-2*T)
 
 
 df = diff(f, X)
@@ -21,7 +21,7 @@ dff = diff(df, X)
 
 def returns_dydt(x, t):
     ############################################################################################################################
-    dxdt = (1) * (t*t - x)
+    dxdt = (1) * (-2*x + math.exp(-2*t))
     return dxdt
 
 
@@ -36,10 +36,10 @@ def euler(order):
     for i in range(1, int(DT)):
         if order == 1:
             # first order
-            ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1], T:t[i]}))
+            ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1], T:t[i-1]}))
         if order == 2:
             # second order
-            ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1], T:t[i]})*(1 + 0.5 * dt * df.evalf(subs={X: ans[i - 1], T:t[i]})))
+            ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1], T:t[i-1]})*(1 + 0.5 * dt * df.evalf(subs={X: ans[i - 1], T:t[i-1]})))
     #     if order == 3:
     #         # second order
     #         ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1],T:[i]})*((1 + 0.5 * dt * df.evalf(subs={X: ans[i - 1],T=t[i]})))
