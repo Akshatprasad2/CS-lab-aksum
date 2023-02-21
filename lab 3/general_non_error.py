@@ -15,15 +15,15 @@ THIGH = 1
 X, T = symbols('X T')
 f = T*T - X
 
-
-df = diff(f, X)
-dft= diff(f,T)
-dff = diff(df, X)
-
 def returns_dydt(x, t):
     ############################################################################################################################
     dxdt = t*t - x
     return dxdt
+
+df = diff(returns_dydt(X,T), X)
+dft= diff(f,T)
+dff = diff(df, X)
+
 
 
 t = np.linspace(TLOW, THIGH, int(DT) + 1)
@@ -37,7 +37,7 @@ def euler(order):
     for i in range(1, int(DT)):
         if order == 1:
             # first order
-            ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1], T:t[i-1]}))
+            ans.append(ans[i - 1] + dt * returns_dydt(ans[i - 1], t[i-1]))
         if order == 2:
             # second order
             ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1], T:t[i-1]}) 
