@@ -5,21 +5,21 @@ import math
 import pandas as pd
 from sympy import symbols, diff
 
-dt = 0.1
+dt = 0.01
 DT = 1 / dt
-x0 = 1
+x0 = 2
 TLOW = 0
 THIGH = 1
 
 X = symbols('X')
     ############################################################################################################################
-f = -X
+f = 1- 2*X
 df = diff(f, X)
 dff = diff(df, X)
 
 def returns_dydt(x, t):
     ############################################################################################################################
-    dxdt = (1) * (-x)
+    dxdt = (1) * (1-2*x)
     return dxdt
 
 
@@ -91,5 +91,6 @@ plt.xlabel('t')
 plt.ylabel('Difference (Eulerr sol - Analytical sol)')
 plt.legend()
 plt.grid()
-plt.savefig('Lab3333')
+#plt.savefig('Lab3333')
+plt.savefig('Q6-Anlyt.png')
 plt.show()
