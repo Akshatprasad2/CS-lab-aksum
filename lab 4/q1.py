@@ -43,11 +43,13 @@ def tailor(order):
             # second order
             ans.append(ans[i - 1] + dt * returns_dydt(ans[i-1],t[i-1]) 
                        + 0.5 * dt*dt* ((dft.evalf(subs={X: ans[i - 1], T:t[i-1]}) + (returns_dydt(ans[i-1],t[i-1]))*df.evalf(subs={X: ans[i-1],T:t[i-1]}) )))
+        
+    return ans
 
 
 def erer(ans):
     errr = [0]
-    for i in range(1, int(DT)+1):
+    for i in range(1, int(DT)):
         errr.append(ans[i] - float(y1[i]))
     return errr
 
@@ -61,7 +63,7 @@ t1 = np.linspace(TLOW, THIGH, int(DT))
 #plotting
 fig = plt.figure(figsize=(10, 10))
 
-plt.plot(t1, ans, color='green', label='1st', linewidth=2)
+plt.plot(t1, errr, color='green', label='1st', linewidth=2)
 plt.xlabel('t')
 plt.ylabel('Analytical sol')
 plt.legend()
