@@ -17,6 +17,7 @@ f = -2*X + sympy.exp(-2*T)
 
 
 df = diff(f, X)
+dft= diff(f,T)
 dff = diff(df, X)
 
 def returns_dydt(x, t):
@@ -39,7 +40,8 @@ def euler(order):
             ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1], T:t[i-1]}))
         if order == 2:
             # second order
-            ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1], T:t[i-1]})*(1 + 0.5 * dt * df.evalf(subs={X: ans[i - 1], T:t[i-1]})))
+            ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1], T:t[i-1]}) 
+                       + 0.5 * dt*dt* ((dft.evalf(subs={X: ans[i - 1], T:t[i-1]}) + (f.evalf(subs={X: ans[i-1],T:t[i-1]}))*df.evalf(subs={X: ans[i-1],T:t[i-1]}) )))
     #     if order == 3:
     #         # second order
     #         ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1],T:[i]})*((1 + 0.5 * dt * df.evalf(subs={X: ans[i - 1],T=t[i]})))
