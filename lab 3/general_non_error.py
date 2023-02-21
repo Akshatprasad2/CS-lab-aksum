@@ -8,12 +8,12 @@ import sympy
 
 dt = 0.01
 DT = 1 / dt
-x0 = 0.1
+x0 = 1
 TLOW = 0
 THIGH = 1
 
 X, T = symbols('X T')
-f = -2*X + sympy.exp(-2*T)
+f = T*T - X
 
 
 df = diff(f, X)
@@ -22,7 +22,7 @@ dff = diff(df, X)
 
 def returns_dydt(x, t):
     ############################################################################################################################
-    dxdt = (1) * (-2*x + math.exp(-2*t))
+    dxdt = t*t - x
     return dxdt
 
 
@@ -100,5 +100,5 @@ plt.ylabel('Difference (Eulerr sol - Analytical sol)')
 plt.legend()
 plt.grid()
 #plt.savefig('Lab3333')
-plt.savefig('anq5.png')
+plt.savefig('anq6.png')
 plt.show()
