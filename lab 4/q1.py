@@ -7,7 +7,7 @@ from sympy import symbols, diff
 import sympy
 
 
-dt = 0.01
+dt = 10**
 
 x0 = 1
 

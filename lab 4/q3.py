@@ -7,12 +7,12 @@ from sympy import symbols, diff
 import sympy
 
 
-dt = 10**9
+dt = 5
 
 x0 = 1
 
 TLOW = 0
-THIGH = 20*10**(9)
+THIGH = 20*5
 
 DT = int((1 / dt) *(THIGH - TLOW))
 
@@ -20,11 +20,11 @@ DT = int((1 / dt) *(THIGH - TLOW))
 
 #here f is the dx/dt function
 X, T = symbols('X T')
-f = -(sympy.ln(2)/(4.5*10**9))*X
+f = -(sympy.ln(2)/(22))*X
 
 def returns_dydt(x, t):
     ############################################################################################################################
-    dxdt = -(math.log(2)/(4.5*10**9))*x
+    dxdt = -(math.log(2)/(22))*x
     return dxdt
 
 df = diff(f, X)
@@ -105,15 +105,15 @@ print(ans2)
 #plotting
 fig = plt.figure(figsize=(10, 10))
 
-# plt.plot(t1, ans1, color='yellow', label='1st', linewidth=2)
-# plt.plot(t1, ans2, color='blue', label='2st', linewidth=2)
-# plt.plot(t1, ans3, color='green', label='3st', linewidth=2)
-# plt.plot(t, y1, color='red', label='real',linewidth=2)
+plt.plot(t1, ans1, color='yellow', label='1st', linewidth=2)
+plt.plot(t1, ans2, color='blue', label='2st', linewidth=2)
+plt.plot(t1, ans3, color='green', label='3st', linewidth=2)
+plt.plot(t1, ans3, color='red', label='real',linewidth=2)
 # plt.plot(t1, xt, color='red', label='real',linewidth=2)
 
-plt.plot(t1, errr1, color='yellow', label='1st', linewidth=2)
-plt.plot(t1, errr2, color='blue', label='2st', linewidth=2)
-plt.plot(t1, errr3, color='green', label='3st', linewidth=2)
+# plt.plot(t1, errr1, color='yellow', label='1st', linewidth=2)
+# plt.plot(t1, errr2, color='blue', label='2st', linewidth=2)
+# plt.plot(t1, errr3, color='green', label='3st', linewidth=2)
 
 
 
@@ -123,5 +123,5 @@ plt.xlabel('t(year)')
 plt.ylabel('Analytical sol(error)')
 plt.legend()
 plt.grid()
-plt.savefig('q3arror.png')
+plt.savefig('q3c.png')
 plt.show()
