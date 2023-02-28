@@ -31,7 +31,7 @@ df = diff(f, X)
 dft= diff(f,T)
 dfx = diff(df, X)
 
-t = np.linspace(TLOW, THIGH, DT +1)
+t = np.linspace(TLOW, THIGH, DT+1)
 
 #analitical soln
 y1 = odeint(returns_dydt, x0, t)
@@ -78,6 +78,10 @@ print(ans3)
 print()
 print(y1)
 
+print(len(ans3))
+print(len(y1))
+
+
 t1 = np.linspace(TLOW, THIGH, DT)
 
 
@@ -87,7 +91,7 @@ fig = plt.figure(figsize=(10, 10))
 plt.plot(t1, ans1, color='blue', label='1st', linewidth=2)
 plt.plot(t1, ans2, color='red', label='2st', linewidth=2)
 plt.plot(t1, ans3, color='green', label='3st', linewidth=2)
-plt.plot(t1, y1, color='orange', label='analytical', linewidth=2)
+plt.plot(t1, y1[:20], color='orange', label='analytical', linewidth=2)
 
 
 # plt.plot(t1, err1, color='red', label='1st', linewidth=2)
