@@ -9,7 +9,7 @@ import sympy
 
 dt = 5
 
-x0 = 1
+x0 = 0
 
 TLOW = 0
 THIGH = 20*5
@@ -20,11 +20,11 @@ DT = int((1 / dt) *(THIGH - TLOW))
 
 #here f is the dx/dt function
 X, T = symbols('X T')
-f = -(sympy.ln(2)/(22))*X
+f = sympy.log(2)/(1600) -(sympy.log(2)/(22))*X
 
 def returns_dydt(x, t):
     ############################################################################################################################
-    dxdt = -(math.log(2)/(22))*x
+    dxdt = math.log(2)/(1600) -(math.log(2)/(22))*x
     return dxdt
 
 df = diff(f, X)
@@ -37,21 +37,7 @@ t = np.linspace(TLOW, THIGH, DT +1)
 y1 = odeint(returns_dydt, x0, t)
 
 
-def tailor(order):
-    ans = [x0]
-    for i in range(1, int(DT)):
-        if order == 1:
-            # first order
-            ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1]}))
-        if order == 2:
-            # second order
-            ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1]})*(1 + 0.5 * dt * df.evalf(subs={X: ans[i - 1]})))
-        if order == 3:
-            # second order
-            ans.append(ans[i - 1] + dt * f.evalf(subs={X: ans[i - 1]})*((1 + 0.5 * dt * df.evalf(subs={X: ans[i - 1]}))
-            + (1/6) * dt*dt*(df.evalf(subs={X: ans[i - 1]})**2 + f.evalf(subs={X: ans[i - 1]}) * dfx.evalf(subs={X: ans[i - 1]}))))
-    return ans
-                        
+
 
 def tailor2(order):
     ans = [x0]
@@ -80,41 +66,33 @@ def erer(ans):
         errr.append(ans[i] - float(y1[i]))
     return errr
 
-ans2 = tailor2(2)
 ans1 = tailor2(1)
+ans2 = tailor2(2)
 ans3 = tailor2(3)
 
+err1 = erer(ans1)
+err2 = erer(ans2)
+err3 = erer(ans3)
 
-
-errr1= erer(ans1)
-errr2= erer(ans2)
-errr3= erer(ans3)
-
-
-
-# print(ans)
-# print(errr)
-
+print(ans3)
+print()
+print(y1)
 
 t1 = np.linspace(TLOW, THIGH, DT)
-xt= np.exp((-np.log(2)/(1600))*t1)
 
-print(xt)
-print(ans1)
-print(ans2)
-#print(ans3)
+
 #plotting
 fig = plt.figure(figsize=(10, 10))
 
-plt.plot(t1, ans1, color='yellow', label='1st', linewidth=2)
-plt.plot(t1, ans2, color='blue', label='2st', linewidth=2)
+plt.plot(t1, ans1, color='blue', label='1st', linewidth=2)
+plt.plot(t1, ans2, color='red', label='2st', linewidth=2)
 plt.plot(t1, ans3, color='green', label='3st', linewidth=2)
-plt.plot(t1, ans3, color='red', label='real',linewidth=2)
+plt.plot(t1, y1, color='orange', label='analytical', linewidth=2)
 
-# plt.plot(t1, errr1, color='yellow', label='1st', linewidth=2)
-# plt.plot(t1, errr2, color='blue', label='2st', linewidth=2)
-# plt.plot(t1, errr3, color='green', label='3st', linewidth=2)
 
+# plt.plot(t1, err1, color='red', label='1st', linewidth=2)
+# plt.plot(t1, err2, color='blue', label='2st', linewidth=2)
+# plt.plot(t1, err3, color='green', label='3st', linewidth=2)
 
 
 
@@ -123,5 +101,5 @@ plt.xlabel('t(year)')
 plt.ylabel('Analytical sol')
 plt.legend()
 plt.grid()
-plt.savefig('q3c.png')
+plt.savefig('q1.png')
 plt.show()
