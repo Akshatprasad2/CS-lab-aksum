@@ -105,8 +105,9 @@ plt.plot(t1, y1[:len(y1)-1], color='orange', label='analytical', linewidth=2)
 
 plt.xlabel('t(year)')
 #plt.ylabel('Analytical sol(amount)')
+
 plt.ylabel('Analytical sol')
 plt.legend()
 plt.grid()
-plt.savefig('q3.png')
+#plt.savefig('q3.png')
 plt.show()
