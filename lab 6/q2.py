@@ -31,21 +31,6 @@ fig = plt.figure(figsize=(10, 10))
 
 ax = plt.plot()
 
-go = 0
-for i in x:
-    if go != 10:
-        go += 1
-        continue
-    else:
-        go = 0
-        if f(i) > 0:
-            plt.scatter([i], [0], color='green', marker='>')
-        elif f(i) < 0:
-            plt.scatter([i], [0], color='red', marker='<')
-        else:
-            plt.scatter([i], [0], color='black', marker='o')
-
-
 plt.plot(x, [0 for i in range(len(x))], color='black', linewidth=2)
 plt.plot(x, y, color='blue', linewidth=2)
 
@@ -59,8 +44,7 @@ plt.scatter(root2, f(root2), color='red', s=100, label = 'Unstable Point')
 # Set axis labels and title
 plt.xlabel('x')
 plt.ylabel('f(x)')
-#plt.title('Function Plot with Infection Point')
+plt.title('Function Plot with Infection Point')
 plt.grid()
 plt.legend()
 plt.show()
-plt.savefig('q1_a.png')
