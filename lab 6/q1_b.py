@@ -9,10 +9,10 @@ import sympy
 
 dt = 0.1
 
-x0 = -1.5
+x0 = -2.5
 
 TLOW = 0
-THIGH = 5
+THIGH = 7
 
 DT = int((1 / dt) *(THIGH - TLOW))
 
@@ -20,11 +20,11 @@ DT = int((1 / dt) *(THIGH - TLOW))
 
 #here f is the dx/dt function
 X, T = symbols('X T')
-f = 1 - X**14
+f = sympy.exp(X) - sympy.cos(X)
 
 def returns_dydt(x, t):
     ############################################################################################################################
-    dxdt = 1 - x**14
+    dxdt = math.exp(x) - math.cos(x)
     return dxdt
 
 df = diff(f, X)
@@ -105,5 +105,5 @@ plt.xlabel('t')
 plt.ylabel('Analytical sol')
 plt.legend()
 plt.grid()
-plt.savefig('qf.png')
+plt.savefig('qj.png')
 plt.show()
