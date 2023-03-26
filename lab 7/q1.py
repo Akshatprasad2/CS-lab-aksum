@@ -9,22 +9,27 @@ import sympy
 
 dt = 0.5
 
-x0 = -0.5
+x0 = 0
 
-TLOW = -2
-THIGH = 100
+TLOW = 0
+THIGH = 25
+
 
 DT = int((1 / dt) *(THIGH - TLOW))
 
 
 
 #here f is the dx/dt function
+g= 9.8
+k= 0.18
+m= 110
+
 X, T = symbols('X T')
-f = X**2
+f = g - k*X*X/m 
 
 def returns_dydt(x, t):
     ############################################################################################################################
-    dxdt = x**2
+    dxdt = g - k*x*x/m
     return dxdt
 
 df = diff(f, X)
@@ -88,15 +93,15 @@ t1 = np.linspace(TLOW, THIGH, DT)
 #plotting
 fig = plt.figure(figsize=(10, 10))
 
-plt.plot(t1, ans1, color='blue', label='1st', linewidth=2)
-plt.plot(t1, ans2, color='red', label='2st', linewidth=2)
-plt.plot(t1, ans3, color='green', label='3st', linewidth=2)
-#plt.plot(t1, y1[:len(y1)-1], color='orange', label='analytical', linewidth=2)
+# plt.plot(t1, ans1, color='blue', label='1st', linewidth=2)
+# plt.plot(t1, ans2, color='red', label='2st', linewidth=2)
+# plt.plot(t1, ans3, color='green', label='3st', linewidth=2)
+# plt.plot(t1, y1[:len(y1)-1], color='orange', label='analytical', linewidth=2)
 
 
-# plt.plot(t1, err1, color='red', label='1st', linewidth=2)
-# plt.plot(t1, err2, color='blue', label='2st', linewidth=2)
-# plt.plot(t1, err3, color='green', label='3st', linewidth=2)
+plt.plot(t1, err1, color='red', label='1st', linewidth=2)
+plt.plot(t1, err2, color='blue', label='2st', linewidth=2)
+plt.plot(t1, err3, color='green', label='3st', linewidth=2)
 
 
 
@@ -105,5 +110,5 @@ plt.xlabel('t')
 plt.ylabel('Analytical sol')
 plt.legend()
 plt.grid()
-plt.savefig('qj.png')
+plt.savefig('q1e.png')
 plt.show()

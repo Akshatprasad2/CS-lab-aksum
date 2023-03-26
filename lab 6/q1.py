@@ -7,7 +7,7 @@ import sympy
 
 dt = 0.01
 
-x0 = 0
+x0 = -0.5
 
 TLOW = -2
 THIGH = 2
@@ -15,10 +15,10 @@ THIGH = 2
 DT = int((1 / dt) *(THIGH - TLOW))
 
 X, T = symbols('X T')
-f = X**2 - 1
+f = X**2 
 
 def f(x):
-    return x**2 - 1   # Example function
+    return x**2   # Example function
 
   # x-axis values
 
@@ -63,4 +63,4 @@ plt.ylabel('f(x)')
 plt.grid()
 plt.legend()
 plt.show()
-plt.savefig('q1_a.png')
+#plt.savefig('q1_a.png')
