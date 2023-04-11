@@ -17,7 +17,7 @@ y0 = 0
 
 
 TLOW = 0
-THIGH = 0.001
+THIGH = 0.01
 DT = int((1 / dt) *(THIGH - TLOW))
 
 
