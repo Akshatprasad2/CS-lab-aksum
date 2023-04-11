@@ -9,15 +9,15 @@ import sympy
 
 dt = 0.01
 
-tou1 =1
+tou1 = 1/10000
 tou2 =1
 
-x0 = 100
+x0 = 1
 y0 = 0
 
 
 TLOW = 0
-THIGH = 10
+THIGH = 1
 DT = int((1 / dt) *(THIGH - TLOW))
 
 
@@ -62,15 +62,15 @@ t1 = np.linspace(TLOW, THIGH, DT)
 fig = plt.figure(figsize=(10, 10))
 
 plt.plot(t, ansx, color='blue', label='x(a)', linewidth=2)
-plt.plot(t, ansy, color='red', label='x(b)', linewidth=2)
+# plt.plot(t, ansy, color='red', label='x(b)', linewidth=2)
 
 #plt.plot(ansx,ansy, color='green', label='x(a) vs x(b)', linewidth=2)
 
 
 
-plt.xlabel('x(b)')
-plt.ylabel('t')
+plt.xlabel('t')
+plt.ylabel('x(a)')
 plt.legend()
 plt.grid()
-#plt.savefig('q2b.png')
+plt.savefig('q1_c1.png')
 plt.show()
