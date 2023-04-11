@@ -7,9 +7,9 @@ from sympy import symbols, diff
 import sympy
 
 
-dt = 0.01
+dt = 0.00001
 
-tou1 = 1/10000
+tou1 =1/10000
 tou2 =1
 
 x0 = 1
@@ -17,7 +17,7 @@ y0 = 0
 
 
 TLOW = 0
-THIGH = 1
+THIGH = 0.001
 DT = int((1 / dt) *(THIGH - TLOW))
 
 
@@ -52,7 +52,7 @@ def euler(t, dt, order):
 
 ansx, ansy = euler(t, dt, 1)
 
-# print(ansx)
+print(ansx)
 # print(ansy)
 
 t1 = np.linspace(TLOW, THIGH, DT)
@@ -61,16 +61,16 @@ t1 = np.linspace(TLOW, THIGH, DT)
 #plotting
 fig = plt.figure(figsize=(10, 10))
 
-plt.plot(t, ansx, color='blue', label='x(a)', linewidth=2)
-# plt.plot(t, ansy, color='red', label='x(b)', linewidth=2)
+#plt.plot(t, ansx, color='blue', label='x(a)', linewidth=2)
+#plt.plot(t, ansy, color='red', label='x(b)', linewidth=2)
 
-#plt.plot(ansx,ansy, color='green', label='x(a) vs x(b)', linewidth=2)
+plt.plot(ansx,ansy, color='green', label='x(a) vs x(b)', linewidth=2)
 
 
 
-plt.xlabel('t')
-plt.ylabel('x(a)')
+plt.xlabel('x(a)')
+plt.ylabel('x(b)')
 plt.legend()
 plt.grid()
-plt.savefig('q1_c1.png')
+plt.savefig('q1_c4.png')
 plt.show()
