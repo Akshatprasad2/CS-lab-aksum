@@ -7,20 +7,20 @@ from sympy import symbols, diff
 import sympy
 
 
-dt = 0.001
+dt = 0.1
 
 
-x0 = 0
-v0 = 1
+x0 = 1
+v0 = 0
 
 fig = plt.figure(figsize=(10, 10))
 
 TLOW = 0
-THIGH = 10
+THIGH = 100
 DT = int((1 / dt) *(THIGH - TLOW))
 
 # k = omega^2
-T=1
+T=10
 om = 2*math.pi/T
 k = om*om
 
@@ -66,10 +66,13 @@ def euler(t, dt, order,k):
 
 ans_x,ans_v,et = euler(t, dt, 1,k)
 
-plt.plot(t, ans_x, color='blue', label=(f"T= {T}"), linewidth=2)
-plt.plot(t, ans_v, color='red', label=(f"T= {T}"), linewidth=2)
-#plt.plot(ans_x, ans_v, label=(f"T= {T}"), linewidth=2)
-#plt.plot(t, et, color='green', label=(f"T= {T}"), linewidth=2)
+loget= np.log(et)
+
+# plt.plot(t, ans_x, color='blue', label=(f"X"), linewidth=2)
+# plt.plot(t, ans_v, color='red', label=(f"V"), linewidth=2)
+# plt.plot(ans_x, ans_v, label=(f"T= {T}"), linewidth=2)
+# plt.plot(t, et, color='green', label=(f"T= {T}"), linewidth=2)
+plt.plot(t, loget, color='green', label=(f"T= {T}"), linewidth=2)
 
 t1 = np.linspace(TLOW, THIGH, DT)
 
@@ -94,5 +97,5 @@ plt.xlabel('t')
 plt.ylabel('x(t)')
 plt.legend()
 plt.grid()
-plt.savefig('q1a_1.png')
+plt.savefig('q1cc_4.png')
 plt.show()
