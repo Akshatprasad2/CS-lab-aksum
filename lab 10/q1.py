@@ -7,7 +7,7 @@ from sympy import symbols, diff
 import sympy
 
 
-dt = 60*60  #dt 1 hrs
+dt = 60*60*25  #dt 1 hrs
 
 m= 2*10**30
 G= 6.67*10**(-11)
@@ -73,7 +73,7 @@ plt.xlabel('t')
 plt.ylabel('x(t)')
 plt.legend()
 plt.grid()
-plt.savefig('q1_1.png')
+# plt.savefig('q1_1.png')
 # plt.show()
 
 fig = plt.figure(figsize=(10, 10))
@@ -83,7 +83,7 @@ plt.xlabel('t')
 plt.ylabel('v(t)')
 plt.legend()
 plt.grid()
-plt.savefig('q1_2.png')
+# plt.savefig('q1_2.png')
 # plt.show()
 
 fig = plt.figure(figsize=(15, 15))
@@ -97,5 +97,5 @@ plt.xlabel('x-axis')
 plt.ylabel('y-axis')
 plt.legend()
 plt.grid()
-plt.savefig('q1_3.png')
+plt.savefig('q1_3C.png')
 plt.show()
